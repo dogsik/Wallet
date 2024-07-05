@@ -1,7 +1,6 @@
 # Gradle files
 .gradle/
 build/
-local.properties
 *.log
 captures/
 .externalNativeBuild/
