@@ -2,7 +2,6 @@ package com.example.wallet.presentation.asset_list.vh
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.data.defaults.Asset
