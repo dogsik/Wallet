@@ -6,7 +6,6 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -21,11 +20,9 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar_layout"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:navGraph="@navigation/navigation" />
+        app:navGraph="@navigation/navigation"
+        android:name="androidx.navigation.fragment.NavHostFragment" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

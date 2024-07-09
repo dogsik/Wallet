@@ -4,6 +4,10 @@
     <string name="settings_button_text">Settings</string>
     <string name="settings_page_text">Settings Page</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="settings_button_text">Settings</string>
+    <string name="settings_page_text">Settings Page</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="assets_button_text">Assets</string>
     <string name="asset_name">asset name</string>
     <string name="asset_price">00.00</string>
