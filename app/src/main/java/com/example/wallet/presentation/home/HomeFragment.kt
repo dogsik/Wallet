@@ -29,6 +29,10 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
             findNavController().navigate(action)
         }
+        binding.buttonAssets.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAssetListFragment()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

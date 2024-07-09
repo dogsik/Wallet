@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.wallet.R
 import com.example.wallet.databinding.FragmentAssetListBinding
 import com.example.wallet.presentation.asset_list.vh.AssetListAdapter
+import com.example.wallet.presentation.home.HomeFragmentDirections
 
 class AssetListFragment : Fragment() {
 
@@ -32,7 +33,8 @@ class AssetListFragment : Fragment() {
         val adapter = AssetListAdapter()
 
         adapter.onClick = { asset ->
-            findNavController().navigate(R.id.action_assetListFragment_to_assetFragment, bundleOf(Pair("asset_id", asset.id)))
+            val action = AssetListFragmentDirections.actionAssetListFragmentToAssetFragment(asset.id)
+            findNavController().navigate(action)
         }
 
         binding.recycler.adapter = adapter

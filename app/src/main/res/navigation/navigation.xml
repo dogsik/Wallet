@@ -36,6 +36,11 @@
         android:id="@+id/assetFragment"
         android:name="com.example.wallet.presentation.asset.AssetFragment"
         android:label="AssetFragment"
-        tools:layout="@layout/fragment_asset" />
+        tools:layout="@layout/fragment_asset" >
+        <argument
+            android:name="asset_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 
 </navigation>
