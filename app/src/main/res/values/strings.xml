@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Wallet</string>
+    <string name="title_home">Home</string>
+    <string name="settings_button_text">Settings</string>
+    <string name="settings_page_text">Settings Page</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
