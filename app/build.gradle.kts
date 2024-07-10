@@ -6,6 +6,10 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
+apply(from = "../code_quality/detekt.gradle")
+apply(from = "../code_style/ktlint.gradle")
+apply(from = "../scripts/git_hook.gradle")
+
 android {
     namespace = "com.example.wallet"
     compileSdk = 34
@@ -61,4 +65,3 @@ dependencies {
 ksp {
     arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")
 }
-
