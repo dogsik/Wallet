@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.navigation.safe.args)
+    alias(libs.plugins.hilt.android)
+    id("com.google.devtools.ksp")
 }
 
 apply(from = "../code_quality/detekt.gradle")
