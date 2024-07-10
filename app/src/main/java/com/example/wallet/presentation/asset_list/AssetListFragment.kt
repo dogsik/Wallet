@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.wallet.R
 import com.example.wallet.databinding.FragmentAssetListBinding
 import com.example.wallet.presentation.asset_list.vh.AssetListAdapter
-import com.example.wallet.presentation.home.HomeFragmentDirections
 
 class AssetListFragment : Fragment() {
 
@@ -21,7 +17,8 @@ class AssetListFragment : Fragment() {
     private val assetListViewModel: AssetListViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAssetListBinding.inflate(inflater, container, false)
@@ -38,14 +35,13 @@ class AssetListFragment : Fragment() {
         }
 
         binding.recycler.adapter = adapter
-        assetListViewModel.assets.observe(viewLifecycleOwner, Observer { assets ->
+        assetListViewModel.assets.observe(viewLifecycleOwner) { assets ->
             adapter.submit(assets)
-        })
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

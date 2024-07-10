@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.data.defaults.Asset
 import com.example.wallet.databinding.ItemAssetBinding
 
-class AssetListAdapter  : RecyclerView.Adapter<AssetViewHolder>() {
+class AssetListAdapter : RecyclerView.Adapter<AssetViewHolder>() {
     private var items = emptyList<Asset>()
     var onClick: (Asset) -> Unit = {}
 

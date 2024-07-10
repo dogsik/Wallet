@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.data.defaults.Asset
 import com.example.wallet.databinding.ItemAssetBinding
 
-class AssetViewHolder (
+class AssetViewHolder(
     private val binding: ItemAssetBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(model: Asset, onClick: (Asset) -> Unit) {

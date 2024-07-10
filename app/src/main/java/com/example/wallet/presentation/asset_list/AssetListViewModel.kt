@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.wallet.data.defaults.Asset
 import com.example.wallet.data.defaults.AssetData
 
-class AssetListViewModel  : ViewModel() {
+class AssetListViewModel : ViewModel() {
     private val _assets: MutableLiveData<List<Asset>> = MutableLiveData()
     val assets: LiveData<List<Asset>> get() = _assets
 

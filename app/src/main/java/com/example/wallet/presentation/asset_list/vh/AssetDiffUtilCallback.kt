@@ -3,7 +3,7 @@ package com.example.wallet.presentation.asset_list.vh
 import androidx.recyclerview.widget.DiffUtil
 import com.example.wallet.data.defaults.Asset
 
-class AssetDiffUtilCallback (
+class AssetDiffUtilCallback(
     private val oldList: List<Asset>,
     private val newList: List<Asset>
 ) : DiffUtil.Callback() {
