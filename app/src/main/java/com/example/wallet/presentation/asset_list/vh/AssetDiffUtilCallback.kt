@@ -1,7 +1,7 @@
 package com.example.wallet.presentation.asset_list.vh
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.wallet.data.defaults.Asset
+import com.example.wallet.domain.entity.Asset
 
 class AssetDiffUtilCallback(
     private val oldList: List<Asset>,

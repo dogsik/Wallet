@@ -242,6 +242,7 @@ formatting:
     autoCorrect: false
     indentSize: 4
     continuationIndentSize: 16
+    excludes: ['**/build/**', '**/app/build/**']
   MaximumLineLength:
     active: true
     maxLineLength: 100

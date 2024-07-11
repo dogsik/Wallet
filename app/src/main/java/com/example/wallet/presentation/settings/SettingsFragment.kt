@@ -1,4 +1,4 @@
-package com.example.wallet.data.settings
+package com.example.wallet.presentation.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

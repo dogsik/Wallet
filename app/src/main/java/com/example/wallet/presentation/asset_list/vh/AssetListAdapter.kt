@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wallet.data.defaults.Asset
 import com.example.wallet.databinding.ItemAssetBinding
+import com.example.wallet.domain.entity.Asset
 
 class AssetListAdapter : RecyclerView.Adapter<AssetViewHolder>() {
     private var items = emptyList<Asset>()

@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wallet.databinding.FragmentAssetListBinding
 import com.example.wallet.presentation.asset_list.vh.AssetListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AssetListFragment : Fragment() {
 
     private var _binding: FragmentAssetListBinding? = null
@@ -30,7 +32,8 @@ class AssetListFragment : Fragment() {
         val adapter = AssetListAdapter()
 
         adapter.onClick = { asset ->
-            val action = AssetListFragmentDirections.actionAssetListFragmentToAssetFragment(asset.id)
+            val action = AssetListFragmentDirections
+                .actionAssetListFragmentToAssetFragment(asset.id)
             findNavController().navigate(action)
         }
 

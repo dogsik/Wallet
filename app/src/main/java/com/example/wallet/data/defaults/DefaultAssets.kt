@@ -8,8 +8,8 @@ import com.example.wallet.domain.entity.Stock
 import java.math.BigDecimal
 import java.time.LocalDate
 
-object AssetData {
-    fun getAssets() = listOf(
+object DefaultAssets {
+    private var assetList = mutableListOf(
         Stock(
             id = 1,
             name = "PKNORLEN",
@@ -70,4 +70,6 @@ object AssetData {
             salePrice = BigDecimal(7.3007)
         )
     )
+
+    fun getAssets() = assetList
 }

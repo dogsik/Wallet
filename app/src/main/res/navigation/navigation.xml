@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.wallet.data.settings.SettingsFragment"
+        android:name="com.example.wallet.presentation.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
