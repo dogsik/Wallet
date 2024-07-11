@@ -12,8 +12,8 @@ class DefaultAssetRepository @Inject constructor(
         return dataSource.getAssetList()
     }
 
-    override fun getAssetById(id: Int): Asset {
-        return dataSource.getAssetList().first { it.id == id }
+    override fun getAssetById(id: Int): Asset? {
+        return dataSource.getAssetList().firstOrNull() { it.id == id }
     }
 
     override fun deleteAsset(id: Int) {

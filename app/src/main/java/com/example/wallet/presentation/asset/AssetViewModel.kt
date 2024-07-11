@@ -15,7 +15,18 @@ class AssetViewModel @Inject constructor(
     private val _asset: MutableLiveData<Asset> = MutableLiveData()
     val asset: LiveData<Asset> get() = _asset
 
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
+
     fun loadAssetById(id: Int) {
-        _asset.value = assetInteractor.getAssetById(id)
+        val result = assetInteractor.getAssetById(id)
+        result.fold(
+            onSuccess = { myObject ->
+                _asset.value = myObject
+            },
+            onFailure = { exception ->
+                _error.value = exception.message
+            }
+        )
     }
 }
