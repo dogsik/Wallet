@@ -28,7 +28,7 @@ class AssetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        assetViewModel.setId(args.assetId)
+        assetViewModel.loadAssetById(args.assetId)
     }
 
     override fun onDestroyView() {

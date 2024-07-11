@@ -9,7 +9,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 object DefaultAssets {
-    private var assetList = mutableListOf(
+    private val assetList = mutableListOf(
         Stock(
             id = 1,
             name = "PKNORLEN",

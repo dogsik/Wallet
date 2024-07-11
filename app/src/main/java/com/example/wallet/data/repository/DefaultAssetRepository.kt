@@ -1,10 +1,11 @@
-package com.example.wallet.domain.repository.impl
+package com.example.wallet.data.repository
 
-import com.example.wallet.data.AssetDataSource
+import com.example.wallet.domain.datasource.AssetDataSource
 import com.example.wallet.domain.entity.Asset
 import com.example.wallet.domain.repository.AssetRepository
+import javax.inject.Inject
 
-class DefaultAssetRepository(
+class DefaultAssetRepository @Inject constructor(
     private val dataSource: AssetDataSource
 ) : AssetRepository {
     override fun getAssets(): List<Asset> {
