@@ -3,7 +3,9 @@ package com.example.wallet.domain.interactor
 import com.example.wallet.domain.entity.Asset
 import com.example.wallet.domain.repository.AssetRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AssetInteractor @Inject constructor(
     private val assetRepository: AssetRepository
 ) {
