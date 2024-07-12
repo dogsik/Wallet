@@ -4,7 +4,7 @@
 
 echo "Running static analysis..."
 
-./gradlew ktlint detekt --daemon
+./gradlew ktlint :app:detekt --daemon
 
 status=$?
 
