@@ -10,8 +10,8 @@ class AssetInteractor @Inject constructor(
     private val assetRepository: AssetRepository
 ) {
     fun getAssetById(id: Int): Result<Asset> {
-        val assetObject = assetRepository.getAssetById(id)
         return try {
+            val assetObject = assetRepository.getAssetById(id)
             if (assetObject != null) {
                 Result.success(assetObject)
             } else {
