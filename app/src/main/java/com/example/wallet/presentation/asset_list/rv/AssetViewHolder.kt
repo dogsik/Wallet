@@ -1,4 +1,4 @@
-package com.example.wallet.presentation.asset_list.vh
+package com.example.wallet.presentation.asset_list.rv
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.databinding.ItemAssetBinding

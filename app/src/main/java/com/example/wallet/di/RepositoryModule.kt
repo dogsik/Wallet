@@ -1,9 +1,13 @@
 package com.example.wallet.di
 
 import com.example.wallet.data.local.DefaultAssetDataSource
+import com.example.wallet.data.local.DefaultCurrencyDataSource
 import com.example.wallet.data.repository.DefaultAssetRepository
+import com.example.wallet.data.repository.DefaultCurrencyRepository
 import com.example.wallet.domain.datasource.AssetDataSource
+import com.example.wallet.domain.datasource.CurrencyDataSource
 import com.example.wallet.domain.repository.AssetRepository
+import com.example.wallet.domain.repository.CurrencyRepository
 import dagger.Binds
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -20,4 +24,14 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindDataSource(dataSource: DefaultAssetDataSource): AssetDataSource
+
+    @Binds
+    @Singleton
+    abstract fun bindCurrencyRepository(
+        currencyRepository: DefaultCurrencyRepository
+    ): CurrencyRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCurrencyDataSource(dataSource: DefaultCurrencyDataSource): CurrencyDataSource
 }

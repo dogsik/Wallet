@@ -8,4 +8,6 @@
     <string name="asset_name">asset name</string>
     <string name="asset_price">00.00</string>
     <string name="asset_text_view">Asset Page</string>
+    <string name="string_selector_elem">string selector elem</string>
+    <string name="change">change</string>
 </resources>
