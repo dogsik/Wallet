@@ -14,6 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ChooseDefaultCurrencyFragment : BottomSheetDialogFragment() {
+    companion object {
+        private const val KEY_CURRENCY = "currencyKey"
+        private const val KEY_CURRENCY_NAME = "currencyName"
+    }
     private var _binding: FragmentBottomSheetBinding? = null
     private val binding get() = _binding!!
     private val currencyViewModel: CurrencyViewModel by viewModels()
@@ -32,7 +36,7 @@ class ChooseDefaultCurrencyFragment : BottomSheetDialogFragment() {
         val adapter = BottomSheetAdapter()
 
         adapter.onClick = { currency ->
-            setFragmentResult("currencyKey", bundleOf("currencyName" to currency.currencyName))
+            setFragmentResult(KEY_CURRENCY, bundleOf(KEY_CURRENCY_NAME to currency.currencyName))
             dismiss()
         }
 
