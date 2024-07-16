@@ -49,10 +49,5 @@
     <dialog
         android:id="@+id/chooseDefaultCurrencyFragment"
         android:name="com.example.wallet.presentation.util.string_selector_bottom_sheet.ChooseDefaultCurrencyFragment"
-        android:label="ChooseDefaultCurrencyFragment"
-        >
-        <action
-            android:id="@+id/action_chooseDefaultCurrencyFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </dialog>
+        android:label="ChooseDefaultCurrencyFragment" />
 </navigation>

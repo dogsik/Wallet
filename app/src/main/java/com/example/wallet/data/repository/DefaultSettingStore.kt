@@ -9,14 +9,14 @@ import javax.inject.Inject
 class DefaultSettingStore @Inject constructor(
     @ApplicationContext context: Context
 ) : SettingStore {
-    private val sharedPreferences: SharedPreferences =
-        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-
     companion object {
         private const val PREFS_NAME = "currency_settings"
         private const val KEY_SELECTED_CURRENCY = "selected_currency"
         private const val DEFAULT_CURRENCY = "usd"
     }
+
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     override fun saveCurrency(currency: String) {
         sharedPreferences.edit().putString(KEY_SELECTED_CURRENCY, currency).apply()
