@@ -1,4 +1,4 @@
-package com.example.wallet.presentation.asset_list.vh
+package com.example.wallet.presentation.asset_list.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
