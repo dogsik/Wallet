@@ -18,9 +18,8 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetViewHolder>() {
     }
 
     fun submit(newItems: List<Currency>) {
-        val diffUtilCallback = BottomSheetDiffUtilCallback(items, newItems)
         items = newItems
-        DiffUtil.calculateDiff(diffUtilCallback).dispatchUpdatesTo(this)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size
