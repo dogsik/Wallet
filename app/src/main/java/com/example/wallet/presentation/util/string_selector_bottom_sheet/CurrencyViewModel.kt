@@ -1,6 +1,5 @@
 package com.example.wallet.presentation.util.string_selector_bottom_sheet
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +20,6 @@ class CurrencyViewModel @Inject constructor(
     }
 
     private fun loadCurrencies() {
-        Log.d("aaaaaaaaaaaaaa", currencyInteractor.getCurrencyList().toString())
         _currencies.value = currencyInteractor.getCurrencyList()
     }
 }

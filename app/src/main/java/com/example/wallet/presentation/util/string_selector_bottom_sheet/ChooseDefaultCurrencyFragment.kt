@@ -32,7 +32,7 @@ class ChooseDefaultCurrencyFragment : BottomSheetDialogFragment() {
         val adapter = BottomSheetAdapter()
 
         adapter.onClick = { currency ->
-            setFragmentResult("currencyKey", bundleOf("currencyObj" to currency.currencyName))
+            setFragmentResult("currencyKey", bundleOf("currencyName" to currency.currencyName))
             dismiss()
         }
 
