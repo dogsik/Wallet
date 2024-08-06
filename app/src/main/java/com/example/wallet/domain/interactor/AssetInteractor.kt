@@ -23,4 +23,8 @@ class AssetInteractor @Inject constructor(
     }
 
     fun getAssetList() = assetRepository.getAssets()
+
+    suspend fun deleteAssetById(id: Int) {
+        assetRepository.deleteAsset(id)
+    }
 }

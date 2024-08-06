@@ -2,7 +2,6 @@ package com.example.wallet.presentation.util.string_selector_bottom_sheet.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.databinding.ItemBottomSheetBinding
 import com.example.wallet.domain.entity.Currency
