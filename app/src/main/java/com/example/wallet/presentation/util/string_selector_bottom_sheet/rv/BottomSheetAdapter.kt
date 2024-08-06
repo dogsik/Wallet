@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.databinding.ItemBottomSheetBinding
 import com.example.wallet.domain.entity.Currency
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetViewHolder>() {
     private var items = emptyList<Currency>()
@@ -17,8 +20,10 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetViewHolder>() {
     }
 
     fun submit(newItems: List<Currency>) {
-        items = newItems
-        notifyDataSetChanged()
+        CoroutineScope(Dispatchers.IO).launch {
+            items = newItems
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount() = items.size

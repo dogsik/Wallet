@@ -6,6 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.databinding.ItemAssetBinding
 import com.example.wallet.domain.entity.Asset
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AssetListAdapter : RecyclerView.Adapter<AssetViewHolder>() {
     private var items = emptyList<Asset>()
@@ -18,9 +22,14 @@ class AssetListAdapter : RecyclerView.Adapter<AssetViewHolder>() {
     }
 
     fun submit(newItems: List<Asset>) {
-        val diffUtilCallback = AssetDiffUtilCallback(items, newItems)
-        items = newItems
-        DiffUtil.calculateDiff(diffUtilCallback).dispatchUpdatesTo(this)
+        CoroutineScope(Dispatchers.IO).launch {
+            val diffResult = withContext(Dispatchers.Default) {
+                val diffUtilCallback = AssetDiffUtilCallback(items, newItems)
+                DiffUtil.calculateDiff(diffUtilCallback)
+            }
+            items = newItems
+            diffResult.dispatchUpdatesTo(this@AssetListAdapter)
+        }
     }
 
     override fun getItemCount() = items.size
