@@ -9,7 +9,7 @@ import javax.inject.Singleton
 class AssetInteractor @Inject constructor(
     private val assetRepository: AssetRepository
 ) {
-    fun getAssetById(id: Int): Result<Asset> {
+    suspend fun getAssetById(id: Int): Result<Asset> {
         return try {
             val assetObject = assetRepository.getAssetById(id)
             if (assetObject != null) {
@@ -22,5 +22,5 @@ class AssetInteractor @Inject constructor(
         }
     }
 
-    fun getAssetList() = assetRepository.getAssets()
+    suspend fun getAssetList() = assetRepository.getAssets()
 }

@@ -10,7 +10,7 @@ class AssetViewHolder(
     fun bind(model: Asset, onClick: (Asset) -> Unit) {
         with(binding) {
             assetName.text = model.name
-            assetPrice.text = model.purchasePrice.toString()
+            assetPrice.text = String.format("%.3f", model.purchasePrice)
             root.setOnClickListener {
                 onClick(model)
             }

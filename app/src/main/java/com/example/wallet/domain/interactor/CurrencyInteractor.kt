@@ -8,5 +8,5 @@ import javax.inject.Singleton
 class CurrencyInteractor @Inject constructor(
     private val currencyRepository: CurrencyRepository
 ) {
-    fun getCurrencyList() = currencyRepository.getCurrencies()
+    suspend fun getCurrencyList() = currencyRepository.getCurrencies()
 }
