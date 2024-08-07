@@ -31,8 +31,10 @@ class DefaultSettingStore @Inject constructor(
 
     override fun getCurrency(): Flow<String> {
         return flow {
-            emit(sharedPreferences.getString(KEY_SELECTED_CURRENCY, DEFAULT_CURRENCY)
-                ?: DEFAULT_CURRENCY)
+            emit(
+                sharedPreferences.getString(KEY_SELECTED_CURRENCY, DEFAULT_CURRENCY)
+                    ?: DEFAULT_CURRENCY
+            )
         }.flowOn(Dispatchers.IO)
     }
 }

@@ -22,7 +22,7 @@ class SettingViewModel @Inject constructor(
 
     private fun loadCurrency() {
         viewModelScope.launch {
-            settingStore.getCurrency().collect{ settings ->
+            settingStore.getCurrency().collect { settings ->
                 _settings.value = settings
             }
         }
