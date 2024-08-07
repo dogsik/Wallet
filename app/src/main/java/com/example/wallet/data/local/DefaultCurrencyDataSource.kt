@@ -9,8 +9,6 @@ import javax.inject.Inject
 
 class DefaultCurrencyDataSource @Inject constructor() : CurrencyDataSource {
     override suspend fun getCurrencyList(): List<Currency> {
-        return withContext(Dispatchers.IO) {
-            DefaultCurrencies.getCurrencies()
-        }
+        return DefaultCurrencies.getCurrencies()
     }
 }

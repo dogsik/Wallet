@@ -9,12 +9,10 @@ import javax.inject.Inject
 
 class DefaultAssetDataSource @Inject constructor() : AssetDataSource {
     override suspend fun getAssetList(): List<Asset> {
-        return withContext(Dispatchers.IO) {
-            DefaultAssets.getAssets()
-        }
+        return DefaultAssets.getAssets()
     }
 
     override suspend fun deleteAsset(id: Int) {
-        withContext(Dispatchers.IO) { DefaultAssets.deleteAsset(id) }
+        DefaultAssets.deleteAsset(id)
     }
 }
