@@ -8,8 +8,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DefaultAssetDataSource @Inject constructor() : AssetDataSource {
-    override fun getAssetList(): List<Asset> {
-        return DefaultAssets.getAssets()
+    override suspend fun getAssetList(): List<Asset> {
+        return withContext(Dispatchers.IO) {
+            DefaultAssets.getAssets()
+        }
     }
 
     override suspend fun deleteAsset(id: Int) {
