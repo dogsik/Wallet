@@ -1,6 +1,8 @@
 package com.example.wallet.domain.repository
 
+import kotlinx.coroutines.flow.Flow
+
 interface SettingStore {
     suspend fun saveCurrency(currency: String)
-    suspend fun getCurrency(): String
+    fun getCurrency(): Flow<String>
 }

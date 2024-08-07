@@ -17,8 +17,8 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetViewHolder>() {
     }
 
     fun submit(newItems: List<Currency>) {
-            items = newItems
-            notifyDataSetChanged()
+        items = newItems
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size

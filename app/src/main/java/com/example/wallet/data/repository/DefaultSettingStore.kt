@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 import com.example.wallet.domain.repository.SettingStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -26,10 +29,10 @@ class DefaultSettingStore @Inject constructor(
         }
     }
 
-    override suspend fun getCurrency(): String {
-        return withContext(Dispatchers.IO) {
-            sharedPreferences.getString(KEY_SELECTED_CURRENCY, DEFAULT_CURRENCY)
-                ?: DEFAULT_CURRENCY
-        }
+    override fun getCurrency(): Flow<String> {
+        return flow {
+            emit(sharedPreferences.getString(KEY_SELECTED_CURRENCY, DEFAULT_CURRENCY)
+                ?: DEFAULT_CURRENCY)
+        }.flowOn(Dispatchers.IO)
     }
 }
