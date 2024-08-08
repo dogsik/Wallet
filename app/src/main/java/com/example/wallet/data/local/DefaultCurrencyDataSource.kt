@@ -6,7 +6,7 @@ import com.example.wallet.domain.entity.Currency
 import javax.inject.Inject
 
 class DefaultCurrencyDataSource @Inject constructor() : CurrencyDataSource {
-    override fun getCurrencyList(): List<Currency> {
+    override suspend fun getCurrencyList(): List<Currency> {
         return DefaultCurrencies.getCurrencies()
     }
 }

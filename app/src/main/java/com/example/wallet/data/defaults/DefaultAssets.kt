@@ -71,5 +71,9 @@ object DefaultAssets {
         )
     )
 
-    fun getAssets() = assetList
+    suspend fun getAssets() = assetList
+
+    suspend fun deleteAsset(id: Int) {
+        assetList.removeAt(id)
+    }
 }

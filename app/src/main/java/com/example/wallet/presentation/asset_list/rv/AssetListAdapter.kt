@@ -19,8 +19,8 @@ class AssetListAdapter : RecyclerView.Adapter<AssetViewHolder>() {
 
     fun submit(newItems: List<Asset>) {
         val diffUtilCallback = AssetDiffUtilCallback(items, newItems)
-        items = newItems
         DiffUtil.calculateDiff(diffUtilCallback).dispatchUpdatesTo(this)
+        items = newItems
     }
 
     override fun getItemCount() = items.size

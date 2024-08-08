@@ -6,7 +6,11 @@ import com.example.wallet.domain.entity.Asset
 import javax.inject.Inject
 
 class DefaultAssetDataSource @Inject constructor() : AssetDataSource {
-    override fun getAssetList(): List<Asset> {
+    override suspend fun getAssetList(): List<Asset> {
         return DefaultAssets.getAssets()
+    }
+
+    override suspend fun deleteAsset(id: Int) {
+        DefaultAssets.deleteAsset(id)
     }
 }
