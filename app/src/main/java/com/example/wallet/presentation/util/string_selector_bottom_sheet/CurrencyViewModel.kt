@@ -3,9 +3,11 @@ package com.example.wallet.presentation.util.string_selector_bottom_sheet
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.wallet.domain.entity.Currency
 import com.example.wallet.domain.interactor.CurrencyInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,6 +22,10 @@ class CurrencyViewModel @Inject constructor(
     }
 
     private fun loadCurrencies() {
-        _currencies.value = currencyInteractor.getCurrencyList()
+        viewModelScope.launch {
+            currencyInteractor.getCurrencyList().collect { currencyList ->
+                _currencies.value = currencyList
+            }
+        }
     }
 }
