@@ -1,5 +1,8 @@
 package com.example.wallet.domain.datasource
 
+import com.example.wallet.data.local.db.CurrencyRateDb
+
 interface CurrencyRateDataSource {
-    fun getCurrencyRate(code: String)
+    suspend fun getCurrencyRate(code: String): CurrencyRateDb
+    suspend fun addCurrencyRate(currencyRateDb: CurrencyRateDb)
 }

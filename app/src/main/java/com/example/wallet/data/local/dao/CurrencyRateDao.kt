@@ -8,10 +8,10 @@ import com.example.wallet.data.local.db.CurrencyRateDb
 @Dao
 interface CurrencyRateDao {
     @Insert
-    fun createCurrencyRate(currencyRate: CurrencyRateDb)
+    suspend fun createCurrencyRate(currencyRate: CurrencyRateDb)
 
     @Query(
         "SELECT * FROM currency_rate WHERE abbreviation = (:abbreviation) ORDER BY id DESC LIMIT 1"
     )
-    fun selectCurrencyRate(abbreviation: String): CurrencyRateDb
+    suspend fun selectCurrencyRate(abbreviation: String): CurrencyRateDb
 }
