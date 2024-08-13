@@ -19,18 +19,24 @@ class DefaultCurrencyRateRepository @Inject constructor(
     override fun getCurrencyRate(code: String): Flow<Result<CurrencyRateModel>> {
         return flow {
             try {
-                synchronize(code)
                 val currency = CurrencyRateMapper.currencyRateDbToModel(
-                    localCurrencyRateDataSource.getCurrencyRate(code)
+                    getCurrencyRateFromNetworkAndSynchronize(code)
                 )
                 emit(Result.success(currency))
             } catch (e: Exception) {
-                emit(Result.failure(Exception("Fetching error")))
+                try {
+                    val currency = CurrencyRateMapper.currencyRateDbToModel(
+                        localCurrencyRateDataSource.getCurrencyRate(code)
+                    )
+                    emit(Result.success(currency))
+                } catch (e: Exception) {
+                    emit(Result.failure(Exception("Fetching error")))
+                }
             }
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun synchronize(code: String) {
+    private suspend fun getCurrencyRateFromNetworkAndSynchronize(code: String): CurrencyRateDb {
         val response = remoteCurrencyRateDataSource.getCurrencyRate(code)
         val currencyRate = CurrencyRateDb(
             date = response.date,
@@ -39,5 +45,6 @@ class DefaultCurrencyRateRepository @Inject constructor(
             rate = response.rate
         )
         localCurrencyRateDataSource.addCurrencyRate(currencyRate)
+        return currencyRate
     }
 }

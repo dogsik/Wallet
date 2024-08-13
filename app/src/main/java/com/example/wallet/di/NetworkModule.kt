@@ -35,7 +35,9 @@ class NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(
-                Json.asConverterFactory("application/json: charset=UTF8".toMediaType())
+                Json {
+                    ignoreUnknownKeys = true
+                }.asConverterFactory("application/json".toMediaType())
             )
             .client(okHttpClient)
             .build()
