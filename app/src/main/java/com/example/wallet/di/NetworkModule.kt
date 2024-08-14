@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class NetworkModule {
     companion object {
         private const val BASE_URL = "https://api.nbrb.by"
-        private const val CONNECTION_TIMEOUT_MILLISECONDS = 30L
+        private const val CONNECTION_TIMEOUT_SECONDS = 30L
     }
 
     @Provides
