@@ -10,6 +10,15 @@ configurations {
 }
 
 dependencies {
+
+    implementation libs.androidx.room.ktx
+}
+
+dependencies {
+    implementation libs.androidx.room.common
+}
+
+dependencies {
     ktlint "com.pinterest:ktlint:$ktlint_version"
 }
 
