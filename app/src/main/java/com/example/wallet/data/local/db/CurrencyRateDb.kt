@@ -3,6 +3,7 @@ package com.example.wallet.data.local.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.wallet.data.model.CurrencyRateModel
 
 @Entity(tableName = "currency_rate")
 data class CurrencyRateDb(
@@ -18,3 +19,12 @@ data class CurrencyRateDb(
     @ColumnInfo("rate")
     val rate: Double
 )
+
+fun CurrencyRateDb.toModel(): CurrencyRateModel {
+    return CurrencyRateModel(
+        date = this.date,
+        abbreviation = this.abbreviation,
+        scale = this.scale,
+        rate = this.rate
+    )
+}
