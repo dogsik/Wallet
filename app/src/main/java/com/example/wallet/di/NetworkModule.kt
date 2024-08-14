@@ -18,14 +18,14 @@ import javax.inject.Singleton
 class NetworkModule {
     companion object {
         private const val BASE_URL = "https://api.nbrb.by"
-        private const val CONNECTION_TIMEOUT = 30L
+        private const val CONNECTION_TIMEOUT_MILLISECONDS = 30L
     }
 
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(CONNECTION_TIMEOUT_MILLISECONDS, TimeUnit.SECONDS)
             .build()
     }
 

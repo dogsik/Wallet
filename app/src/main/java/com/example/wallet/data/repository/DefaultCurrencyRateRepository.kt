@@ -2,14 +2,15 @@ package com.example.wallet.data.repository
 
 import com.example.wallet.data.local.LocalCurrencyRateDataSource
 import com.example.wallet.data.local.db.CurrencyRateDb
-import com.example.wallet.data.mapper.CurrencyRateMapper
+import com.example.wallet.data.local.db.toModel
 import com.example.wallet.data.model.CurrencyRateModel
 import com.example.wallet.data.remote.RemoteCurrencyRateDataSource
+import com.example.wallet.data.remote.api.toDb
 import com.example.wallet.domain.repository.CurrencyRateRepository
 import com.example.wallet.utils.resultOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.time.LocalDateTime
+import java.time.LocalDate
 import javax.inject.Inject
 
 class DefaultCurrencyRateRepository @Inject constructor(
@@ -17,48 +18,39 @@ class DefaultCurrencyRateRepository @Inject constructor(
     private val remoteCurrencyRateDataSource: RemoteCurrencyRateDataSource
 ) : CurrencyRateRepository {
     companion object {
-        private var lastUpdated: LocalDateTime? = null
+        private const val DATE_START_PARSING = 0
+        private const val DATE_END_PARSING = 10
     }
 
     override suspend fun getCurrencyRate(code: String): Result<CurrencyRateModel> {
         return withContext(Dispatchers.IO) {
-            if (lastUpdated == null || !isToday(lastUpdated)) {
-                try {
-                    lastUpdated = LocalDateTime.now()
+            try {
+                val dbCurrencyRateDb = localCurrencyRateDataSource.getCurrencyRate(code)
+                if (dbCurrencyRateDb != null && LocalDate.parse(
+                        dbCurrencyRateDb.date.subSequence(DATE_START_PARSING, DATE_END_PARSING)
+                    ).isToday()
+                ) {
                     resultOf {
-                        CurrencyRateMapper.currencyRateDbToModel(
-                            getCurrencyRateFromNetworkAndSynchronize(code)
-                        )
+                        dbCurrencyRateDb.toModel()
                     }
-                } catch (e: Exception) {
+                } else {
                     resultOf {
-                        CurrencyRateMapper.currencyRateDbToModel(
-                            localCurrencyRateDataSource.getCurrencyRate(code)
-                        )
+                        getCurrencyRateFromNetworkAndSynchronize(code).toModel()
                     }
                 }
-            }
-            resultOf {
-                CurrencyRateMapper.currencyRateDbToModel(
-                    localCurrencyRateDataSource.getCurrencyRate(code)
-                )
+            } catch (e: Exception) {
+                Result.failure(e)
             }
         }
     }
 
     private suspend fun getCurrencyRateFromNetworkAndSynchronize(code: String): CurrencyRateDb {
-        val response = remoteCurrencyRateDataSource.getCurrencyRate(code)
-        val currencyRate = CurrencyRateDb(
-            date = response.date,
-            abbreviation = response.abbreviation,
-            scale = response.scale,
-            rate = response.rate
-        )
+        val currencyRate = remoteCurrencyRateDataSource.getCurrencyRate(code).toDb()
         localCurrencyRateDataSource.addCurrencyRate(currencyRate)
         return currencyRate
     }
 
-    private fun isToday(dateTime: LocalDateTime?): Boolean {
-        return dateTime?.toLocalDate()?.isEqual(LocalDateTime.now().toLocalDate()) ?: false
+    private fun LocalDate?.isToday(): Boolean {
+        return this?.isEqual(LocalDate.now()) ?: false
     }
 }
