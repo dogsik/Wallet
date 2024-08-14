@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
     implementation(libs.converter.kotlinx.serialization)
+
+    implementation(libs.androidx.datastore.preferences)
 }
 
 ksp {
