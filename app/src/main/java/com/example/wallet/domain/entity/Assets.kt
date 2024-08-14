@@ -4,11 +4,11 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 enum class Currency(val currencyName: String) {
-    USD("usd"),
-    EUR("eur"),
-    CNY("cny"),
-    RUB("rub"),
-    BYN("byn")
+    USD("USD"),
+    EUR("EUR"),
+    CNY("CNY"),
+    RUB("RUB"),
+    BYN("BYN")
 }
 
 data class Meta(
